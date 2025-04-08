@@ -1,8 +1,8 @@
 <script setup>
-
+import HeroSectionComponent from '~/components/custom/HeroSectionComponent.vue';
 </script>
 <template>
     <div>
-        <h1>Home page</h1>
+        <hero-section-component />
     </div>
 </template>
