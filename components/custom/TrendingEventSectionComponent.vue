@@ -72,11 +72,11 @@ const goToPrevPage = () => {
       />
     </div>
     <div class="flex justify-center items-center gap-4 mt-10">
-      <button @click="goToPrevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40">
+      <button @click="goToPrevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40 hover:opacity-90">
         Prev
       </button>
       <span class="text-[#432361] text-sm">Page {{ currentPage }} of {{ totalPages }}</span>
-      <button @click="goToNextPage" :disabled="currentPage === totalPages" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40">
+      <button @click="goToNextPage" :disabled="currentPage === totalPages" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40 hover:opacity-90">
         Next
       </button>
     </div>

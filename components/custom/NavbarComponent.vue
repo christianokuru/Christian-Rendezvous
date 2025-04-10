@@ -10,7 +10,7 @@ const navLinks = [
 
 </script>
 <template>
-    <nav class="absolute z-10 bg-[#FFFFFF99] rounded-[20px] mx-[64px] mt-[50px] py-[12px]">
+    <nav class="z-20 bg-[#ffffff99] mx-[64px] mt-[40px] py-[12px] rounded-[20px]">
       <div class=" flex items-center justify-between mx-[24px] space-x-[258.5px]">
         <div>
             <div class="font-[400] text-[32px] leading-[100%] text-[#432361]">rendezvous</div>
