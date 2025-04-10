@@ -14,7 +14,7 @@ const { progress, isLoading, error, start, finish, clear } = useLoadingIndicator
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="orange" />
+  <NuxtLoadingIndicator color="#9751da" />
   <div class="relative">
     <navbar-component class="absolute top-0 left-0 right-0" />
 
