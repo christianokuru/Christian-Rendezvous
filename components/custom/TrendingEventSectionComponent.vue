@@ -1,7 +1,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useDateFormat } from "@vueuse/core";
-import TrendingEventsCardComponent from "@/components/custom/TrendingEventsCardComponent.vue";
+import TrendingEventsCardComponent from "@/components/custom/TrendingEventsCardComponent.vue"
+import arrow from '@/assets/icons/arrow-up.svg'
 
 const formatEventDate = (dateString, timeString) => {
   const fullDate = new Date(`${dateString}T${timeString}`);
@@ -42,14 +43,13 @@ const goToPrevPage = () => {
 </script>
 
 <template>
-  <div>
+  <div class="pb-[100px]">
     <div class="flex items-center justify-between mx-[64px] mb-[47px] mt-[64px]">
       <h1 class="font-[400] text-[32px] leading-[100%]">Trending events</h1>
-      <nuxt-link to="/signup">
-        <p class="font-[400] text-[16px] leading-[100%] text-[#432361] hover:underline">
-          View all trending events
-        </p>
-      </nuxt-link>
+      <nuxt-link to="/" class="flex items-center space-x-[4px]">
+          <p class="text-[16px] text-[#432361] font-[400] leading-[100%] hover:underline">View all trending events</p>
+          <img :src="arrow" alt="arrow-icon">
+        </nuxt-link>
     </div>
 
     <!-- Loader / Error -->

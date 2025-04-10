@@ -1,4 +1,5 @@
 <script setup>
+import arrow from '@/assets/icons/arrow-up.svg'
 defineProps({
   image: String,
   title: String,
@@ -21,9 +22,11 @@ defineProps({
       <p class="text-[16px] font-[400] leading-[100%] text-[#000000] mb-[16px] truncate">
         {{ description }}
       </p>
-      <a href="#" class="text-[14px] text-[#432361] font-[500] leading-[100%] hover:underline">
-        View details →
-      </a>
+      
+        <nuxt-link to="/" class="flex items-center space-x-[4px]">
+          <p class="text-[14px] text-[#432361] font-[500] leading-[100%] hover:underline">View details</p>
+          <img :src="arrow" alt="arrow-icon">
+        </nuxt-link>
     </div>
   </div>
 </template>
