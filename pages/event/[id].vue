@@ -58,7 +58,13 @@ const event = computed(() => data.value?.data?.event || null);
             <div class="flex items-center space-x-[2.5px]">
               <img src="/assets/icons/Location.svg" alt="location-icon" />
               <p class="font-[400] text-[16px] leading-[100%]">
-                {{ (event.address, event.city) }}, {{ event.country }}
+                {{ event.address, event.city }}, {{ event.country }}
+              </p>
+            </div>
+            <div class="flex items-center space-x-[2.5px]">
+              <img src="/assets/icons/Calendar.svg" alt="calendar-icon" />
+              <p class="font-[400] text-[16px] leading-[100%] capitalize">
+                {{ event.category }}
               </p>
             </div>
             <div class="flex items-center space-x-[2.5px]">

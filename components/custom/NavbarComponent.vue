@@ -2,10 +2,10 @@
 import ButtonComponent from '@/components/custom/ButtonComponent.vue'
 
 const navLinks = [
-  { name: 'Discover', to: '/discover' },
-  { name: 'About Us', to: '/about' },
-  { name: 'FAQ', to: '/faq' },
-  { name: 'Contact Us', to: '/contact' }
+  { name: 'Discover', route: '/discover' },
+  { name: 'About Us', route: '/about' },
+  { name: 'FAQ', route: '/faq' },
+  { name: 'Contact Us', route: '/contact' }
 ]
 
 </script>
@@ -21,7 +21,7 @@ const navLinks = [
         <ul class="flex space-x-[16px] items-center">
           <li v-for="(link, index) in navLinks" :key="index">
             <nuxt-link
-              :to="link.to"
+              :to="link.route"
               class="text-[#432361] hover:text-[#43236186] font-[400] text-[16px] leading-[100%]"
             >
               {{ link.name }}
