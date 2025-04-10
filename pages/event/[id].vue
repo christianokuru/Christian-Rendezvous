@@ -56,17 +56,21 @@ const event = computed(() => data.value?.data?.event || null);
         </div>
         <!-- maps -->
         <div class="border border-blue-500">
-          <div>
-            <div>
-              <h1>Contact organizers</h1>
+          <div class="mb-[50px]">
+            <div class="mb-[20px]">
+              <h1 class="font-[600] text-[16px] leading-[100%] text-[#000000]">Contact organizers</h1>
             </div>
-            <div>icons</div>
+            <div class="flex items-center space-x-[24px]">
+                <img src="/assets/icons/email.svg" alt="email">
+                <img src="/assets/icons/x.svg" alt="">
+                <img src="/assets/icons/insta.svg" alt="">
+            </div>
           </div>
           <!-- map -->
           <div>
-            <p>Directions</p>
+            <p class="font-[600] text-[16px] leading-[100%] text-[#000000]">Directions</p>
             <!-- Map Embed -->
-            <div class="">
+            <div class="mt-[20px]">
               <iframe
                 v-if="event.lat && event.long"
                 :src="`https://www.google.com/maps?q=${event.lat},${event.long}&hl=es;z=14&output=embed`"
