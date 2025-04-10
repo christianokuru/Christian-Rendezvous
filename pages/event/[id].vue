@@ -30,7 +30,7 @@ const price = computed(() => {
 <template>
   <div class="mx-[39px] py-10 px-6">
     <div v-if="pending" class="text-center text-[#432361] text-lg">
-      Loading event...
+      Loading event details...
     </div>
     <div v-else-if="error" class="text-center text-red-500 text-lg">
       Failed to load event 😢
