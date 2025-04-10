@@ -36,12 +36,12 @@ const event = computed(() => data.value?.data?.event || null);
       <img
         :src="event.imageUrl"
         alt="Event Image"
-        class="w-[1311px] h-auto rounded-[10px]"
+        class="w-[1311px] h-[480px] object-cover rounded-[10px]"
       />
 
       <!-- content -->
       <div class="grid grid-cols-4 border gap-x-[37px]">
-        <div class="border border-red-500 col-span-3">
+        <div class="col-span-3">
           <h1 class="text-3xl font-bold text-[#432361]">
             {{ event.title }}
           </h1>
@@ -55,7 +55,7 @@ const event = computed(() => data.value?.data?.event || null);
           </p>
         </div>
         <!-- maps -->
-        <div class="border border-blue-500">
+        <div>
           <div class="mb-[50px]">
             <div class="mb-[20px]">
               <h1 class="font-[600] text-[16px] leading-[100%] text-[#000000]">Contact organizers</h1>

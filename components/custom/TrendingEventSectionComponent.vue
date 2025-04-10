@@ -62,15 +62,21 @@ const goToPrevPage = () => {
 
     <!-- Events -->
     <div v-else class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-[26px] mx-[64px]">
-      <trending-events-card-component
-        v-for="event in paginatedEvents"
-        :key="event.id"
-        :image="event.imageUrl"
-        :title="event.title"
-        :date="formatEventDate(event.date, event.time)"
-        :description="event.description"
-      />
-    </div>
+  <nuxt-link
+    v-for="event in paginatedEvents"
+    :key="event.id"
+    :to="`/event/${event.id}`" 
+    class="block" 
+  >
+    <trending-events-card-component
+      :image="event.imageUrl"
+      :title="event.title"
+      :date="formatEventDate(event.date, event.time)"
+      :description="event.description"
+    />
+  </nuxt-link>
+</div>
+
     <div class="flex justify-center items-center gap-4 mt-10">
       <button @click="goToPrevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40 hover:opacity-90">
         Prev
