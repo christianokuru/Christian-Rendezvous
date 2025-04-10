@@ -16,9 +16,9 @@ defineProps({
         {{ title }}
       </h3>
       <p class="text-[14px] text-[#4F4F4F] mb-2">
-        {{ date }} • {{ time }}
+        {{ date }}  {{ time }}
       </p>
-      <p class="text-[14px] text-[#828282] leading-[1.5] mb-3">
+      <p class="text-[14px] text-[#828282] leading-[1.5] mb-3 truncate">
         {{ description }}
       </p>
       <a href="#" class="text-[14px] text-[#2F80ED] font-medium hover:underline">

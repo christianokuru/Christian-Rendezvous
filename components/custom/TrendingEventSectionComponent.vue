@@ -1,33 +1,44 @@
 <script setup>
-import { ref, computed } from 'vue'
-import TrendingEventsCardComponent from '@/components/custom/TrendingEventsCardComponent.vue'
+import { ref, computed } from "vue";
+import { useDateFormat } from "@vueuse/core";
+import TrendingEventsCardComponent from "@/components/custom/TrendingEventsCardComponent.vue";
 
-// Pagination states
-const currentPage = ref(1)
-const itemsPerPage = 3
+const formatEventDate = (dateString, timeString) => {
+  const fullDate = new Date(`${dateString}T${timeString}`);
+  return useDateFormat(fullDate, "ddd MMM, Do • hA").value.toLowerCase();
+};
 
-// useFetch call (Nuxt handles server-side rendering and reactivity here!)
-const { data: events, pending, error } = await useFetch('https://rendezvous-events.onrender.com/events')
+const { data, error, pending } = await useFetch(
+  "https://rendezvous-events.onrender.com/events",
+  {
+    server: false, // Fetch only on client-side
+  }
+);
 
-// Computed pagination logic
-// const totalPages = computed(() => {
-//   return events.value ? Math.ceil(events.value.length / itemsPerPage) : 0
-// })
+// Extract events from the nested response
+// const events = computed(() => (data.value?.data?.allEvents || []).slice(0, 3));
 
-// const paginatedEvents = computed(() => {
-//   if (!events.value) return []
-//   const start = (currentPage.value - 1) * itemsPerPage
-//   return events.value.slice(start, start + itemsPerPage)
-// })
+const ITEMS_PER_PAGE = 3;
+const currentPage = ref(1);
 
-// // Pagination actions
-// function nextPage() {
-//   if (currentPage.value < totalPages.value) currentPage.value++
-// }
+const paginatedEvents = computed(() => {
+  const allEvents = data.value?.data?.allEvents || [];
+  const start = (currentPage.value - 1) * ITEMS_PER_PAGE;
+  return allEvents.slice(start, start + ITEMS_PER_PAGE);
+});
 
-// function prevPage() {
-//   if (currentPage.value > 1) currentPage.value--
-// }
+const totalPages = computed(() => {
+  const totalEvents = data.value?.data?.allEvents?.length || 0;
+  return Math.ceil(totalEvents / ITEMS_PER_PAGE);
+});
+
+const goToNextPage = () => {
+  if (currentPage.value < totalPages.value) currentPage.value++;
+};
+
+const goToPrevPage = () => {
+  if (currentPage.value > 1) currentPage.value--;
+};
 </script>
 
 <template>
@@ -42,39 +53,32 @@ const { data: events, pending, error } = await useFetch('https://rendezvous-even
     </div>
 
     <!-- Loader / Error -->
-    <div v-if="pending" class="text-center text-[#432361] text-lg">Loading events...</div>
-    <div v-else-if="error" class="text-center text-red-500 text-lg">Failed to load events 😢</div>
+    <div v-if="pending" class="text-center text-[#432361] text-xl">
+      Loading events, please wait...
+    </div>
+    <div v-else-if="error" class="text-center text-red-500 text-xl">
+      Failed to load events 😢
+    </div>
 
     <!-- Events -->
     <div v-else class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-[26px] mx-[64px]">
       <trending-events-card-component
-        v-for="(event, index) in paginatedEvents"
-        :key="index"
-        :image="event.image"
+        v-for="event in paginatedEvents"
+        :key="event.id"
+        :image="event.imageUrl"
         :title="event.title"
-        :date="event.date"
-        :time="event.time"
+        :date="formatEventDate(event.date, event.time)"
         :description="event.description"
       />
     </div>
-
-    <!-- Pagination controls -->
-    <!-- <div v-if="events && events.length > 0" class="flex items-center justify-center mt-8 space-x-4">
-      <button
-        @click="prevPage"
-        :disabled="currentPage === 1"
-        class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-50"
-      >
-        Previous
+    <div class="flex justify-center items-center gap-4 mt-10">
+      <button @click="goToPrevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40">
+        Prev
       </button>
-      <span class="text-lg font-semibold text-[#432361]">Page {{ currentPage }} of {{ totalPages }}</span>
-      <button
-        @click="nextPage"
-        :disabled="currentPage === totalPages"
-        class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-50"
-      >
+      <span class="text-[#432361] text-sm">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button @click="goToNextPage" :disabled="currentPage === totalPages" class="px-4 py-2 bg-[#432361] text-white rounded disabled:opacity-40">
         Next
       </button>
-    </div> -->
+    </div>
   </div>
 </template>
