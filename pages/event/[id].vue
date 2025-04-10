@@ -21,6 +21,10 @@ const { data, pending, error } = await useFetch(
 );
 
 const event = computed(() => data.value?.data?.event || null);
+
+const price = computed(() => {
+  return event.value?.price?.toLocaleString() || '0'
+});
 </script>
 
 <template>
@@ -93,7 +97,7 @@ const event = computed(() => data.value?.data?.event || null);
                 <p
                   class="font-[500] text-[20px] leading-[100%] mt-[8px] text-[#9B51E0]"
                 >
-                  NGN {{ event.price }}
+                  NGN {{ price }}
                 </p>
               </div>
               <div>
@@ -101,7 +105,7 @@ const event = computed(() => data.value?.data?.event || null);
                 <p
                   class="font-[500] text-[20px] leading-[100%] mt-[8px] text-[#9B51E0]"
                 >
-                  NGN {{ event.price }}
+                  NGN {{ price }}
                 </p>
               </div>
             </div>
