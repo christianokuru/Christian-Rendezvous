@@ -12,16 +12,16 @@ defineProps({
   <div class="max-w-[421px] bg-[#FFFFFF] rounded-[10px] overflow-hidden border-[1px] border-[#E0E0E0]">
     <img :src="image" alt="Event Image" class="w-full h-[240px] object-cover" />
     <div class="p-4">
-      <h3 class="text-[16px] font-semibold text-[#333] mb-1">
+      <h3 class="text-[16px] font-[600] leading-[100%] text-[#000000] mb-[4px]">
         {{ title }}
       </h3>
-      <p class="text-[14px] text-[#4F4F4F] mb-2">
-        {{ date }}  {{ time }}
+      <p class="text-[16px] font-[400] leading-[100%] text-[#000000] mb-[16px] mr-[8px]">
+        {{ date }}<span class="text-[16px] font-[400] leading-[100%] text-[#000000]">{{ time }}</span>
       </p>
-      <p class="text-[14px] text-[#828282] leading-[1.5] mb-3 truncate">
+      <p class="text-[16px] font-[400] leading-[100%] text-[#000000] mb-[16px] truncate">
         {{ description }}
       </p>
-      <a href="#" class="text-[14px] text-[#2F80ED] font-medium hover:underline">
+      <a href="#" class="text-[14px] text-[#432361] font-[500] leading-[100%] hover:underline">
         View details →
       </a>
     </div>

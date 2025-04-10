@@ -5,7 +5,7 @@ import TrendingEventsCardComponent from "@/components/custom/TrendingEventsCardC
 
 const formatEventDate = (dateString, timeString) => {
   const fullDate = new Date(`${dateString}T${timeString}`);
-  return useDateFormat(fullDate, "ddd MMM, Do • hA").value.toLowerCase();
+  return useDateFormat(fullDate, "ddd MMM, Do • hA");
 };
 
 const { data, error, pending } = await useFetch(
