@@ -13,7 +13,9 @@ const navLinks = [
     <nav class="z-20 bg-[#ffffff99] mx-[64px] mt-[40px] py-[12px] rounded-[20px]">
       <div class=" flex items-center justify-between mx-[24px] space-x-[258.5px]">
         <div>
+           <nuxt-link to="/">
             <div class="font-[400] text-[32px] leading-[100%] text-[#432361]">rendezvous</div>
+           </nuxt-link>
         </div>
         <!-- Center: Nav Links -->
         <ul class="flex space-x-[16px] items-center">
